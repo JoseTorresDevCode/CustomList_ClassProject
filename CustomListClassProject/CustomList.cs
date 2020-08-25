@@ -44,10 +44,30 @@ namespace CustomListClassProject
         {
             if (_count == _capacity)
             {
-                _items = new T[_capacity];
+                _items = new T[_capacity *= 2];
             }
             _items[_count] = item;
             _count++;
+        }
+
+        public T this[int index] 
+        {
+            get 
+            {
+                if(index > _capacity)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    return _items[index];
+                }
+
+            }
+            set
+            {
+                _items[index] = value;
+            }
         }
 
     }

@@ -49,10 +49,11 @@ namespace CustomListTests
         {
             //arrange
             CustomList<int> customList = new CustomList<int>();
+            int value6 = 5;
             int expected = 5;
             int actual;
             //act
-            customList.Add(5);
+            customList.Add(value6);
             actual = customList[0];
 
             //assert
@@ -64,15 +65,20 @@ namespace CustomListTests
         {
             //arrange
             CustomList<int> customList2 = new CustomList<int>();
+            int value10 = 1;
+            int value11 = 1;
+            int value12 = 1;
+            int value13 = 1;
+            int value14 = 1;         
             int expected = 8;
             int actual;
 
             //act
-            customList2.Add(1);
-            customList2.Add(1);
-            customList2.Add(1);
-            customList2.Add(1);
-            customList2.Add(1);
+            customList2.Add(value10);
+            customList2.Add(value11);
+            customList2.Add(value12);
+            customList2.Add(value13);
+            customList2.Add(value14);
             actual = customList2.Capacity;
 
             //assert
