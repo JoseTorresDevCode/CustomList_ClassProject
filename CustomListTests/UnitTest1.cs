@@ -20,7 +20,7 @@ namespace CustomListTests
             //act
             customList.Add(value1);
             customList.Add(value2);
-            actual = customList.count;
+            actual = customList.Count;
 
             //assert
             Assert.AreEqual(expected, actual);
@@ -87,6 +87,7 @@ namespace CustomListTests
             int value3 = 1;
             int value4 = 3;
             int expected = 3;
+            
             int actual;
 
             //act

@@ -40,5 +40,15 @@ namespace CustomListClassProject
             _items = new T[_capacity];
         }
 
+        public void Add(T item)
+        {
+            if (_count == _capacity)
+            {
+                _items = new T[_capacity];
+            }
+            _items[_count] = item;
+            _count++;
+        }
+
     }
 }
