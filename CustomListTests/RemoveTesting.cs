@@ -28,20 +28,21 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        public void Remove_AtIndex0_NewValueAtIndex0()
+        public void Remove_DuplicateItems_OnlyFirstInstanceRemoved()
         {
             //arrange
             CustomList<int> customList = new CustomList<int>();
             int value1 = 1;
             int value2 = 2;
-            int expected = 2;
+            int expected = 1;
             int actual;
 
             //act
             customList.Add(value1);
             customList.Add(value2);
-            customList.Remove(0);
-            actual = customList[0];
+            customList.Add(value1);
+            customList.Remove(1);
+            actual = customList[1];
 
             //assert
             Assert.AreEqual(expected, actual);

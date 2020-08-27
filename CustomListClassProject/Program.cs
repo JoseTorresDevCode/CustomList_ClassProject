@@ -11,7 +11,7 @@ namespace CustomListClassProject
     {
         static void Main(string[] args)
         {
-           
+            //CustomList<int> test = new CustomList<int>() { 1, 2, 3 };
         }
         
        

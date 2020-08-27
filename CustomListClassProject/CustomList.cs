@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CustomListClassProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         T[] _items;
-
+        T[] temp;
         int _capacity;
         int _count;
 
@@ -44,7 +47,15 @@ namespace CustomListClassProject
         {
             if (_count == _capacity)
             {
-                _items = new T[_capacity *= 2];
+                T[] tempArray = new T[_capacity *= 2];
+
+                for (int i = 0; i < _count; i++) 
+                {
+                    tempArray[i] = _items[i];
+                }
+
+
+                _items = tempArray;
             }
             _items[_count] = item;
             _count++;
@@ -54,7 +65,7 @@ namespace CustomListClassProject
         {
             get 
             {
-                if(index > _capacity)
+                if(index >= _count)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -70,5 +81,39 @@ namespace CustomListClassProject
             }
         }
 
+        public bool Remove(T item)
+        {
+            T[] customArray = new T[_capacity]; 
+            bool isSame = false;
+            for (int i = 0, j = 0; i < _count; i++)
+            {
+                if (i == j && _items[i].Equals(item))
+                {
+                    isSame = true;
+                   
+                }
+                else
+                {
+                    customArray[j] = _items[i];
+                    j++;
+                }
+            }
+            if (isSame)
+            {
+                _count--;
+                _items = customArray;
+            }
+            
+           
+            return isSame;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                yield return _items[i];
+            }
+        }
     }
 }

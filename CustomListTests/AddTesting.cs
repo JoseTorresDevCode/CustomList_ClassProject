@@ -7,7 +7,7 @@ namespace CustomListTests
     [TestClass]
     public class AddTesting
     {
-        [TestMethod]
+        
        
         [TestMethod]
         public void Add_AddTwo_CapacityOf4()
@@ -68,7 +68,32 @@ namespace CustomListTests
             //assert
             Assert.AreEqual(expected, actual);
         }
-       
+
+        [TestMethod]
+        public void Add_AddToFullArray_OriginalItemRemains()
+        {
+            //arrange
+            CustomList<int> customList2 = new CustomList<int>();
+            int value10 = 5;
+            int value11 = 1;
+            int value12 = 1;
+            int value13 = 1;
+            int value14 = 1;
+            int expected = 5;
+            int actual;
+
+            //act
+            customList2.Add(value10);
+            customList2.Add(value11);
+            customList2.Add(value12);
+            customList2.Add(value13);
+            customList2.Add(value14);
+            actual = customList2[0];
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
         [TestMethod]
         public void Add_CheckValueAtLastIndex_EqualsLastValueAdded()
         {
