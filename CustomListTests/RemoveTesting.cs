@@ -66,7 +66,7 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        public void Remove_ReduceCapacity_CapacityReturnsto4()
+        public void Remove_RemoveValueNotInList_CustomListCountDoesNotchange()
         {
             //arrange
             CustomList<int> customList = new CustomList<int>();
@@ -75,7 +75,8 @@ namespace CustomListTests
             int value3 = 3;
             int value4 = 4;
             int value5 = 5;
-            int expected = 4;
+            int removeValue1 = 100;
+            int expected = 5;
             int actual;
 
             //act
@@ -84,11 +85,37 @@ namespace CustomListTests
             customList.Add(value3);
             customList.Add(value4);
             customList.Add(value5);
-            customList.Remove(value1);
-            actual = customList.Capacity;
+            customList.Remove(removeValue1);
+            actual = customList.Count;
 
             //assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_ValueFromListTwice_ReturnFalse()
+        {
+            //arrange
+            CustomList<int> customList = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            bool expected = false;
+            bool actual;
+
+            //act 
+            
+            customList.Add(value1);
+            customList.Add(value2);
+            customList.Add(value3);
+            customList.Remove(value3);
+            actual = customList.Remove(value3);
+            //actual = customList.Remove;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+
         }
     }
 }
