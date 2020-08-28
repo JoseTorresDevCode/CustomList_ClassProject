@@ -12,7 +12,6 @@ namespace CustomListClassProject
     public class CustomList<T> : IEnumerable
     {
         T[] _items;
-        T[] temp;
         int _capacity;
         int _count;
 
@@ -114,6 +113,16 @@ namespace CustomListClassProject
             {
                 yield return _items[i];
             }
+        }
+
+        public override string ToString()
+        {
+            string testList ="";
+            for (int i = 0; i < _count; i++)
+            {
+                testList += _items[i].ToString();
+            }
+            return testList;
         }
     }
 }
