@@ -124,5 +124,11 @@ namespace CustomListClassProject
             }
             return testList;
         }
+
+        public static CustomList<T> operator +(CustomList<T> test1, CustomList<T> test2)
+        {
+            CustomList<T> = new CustomList<T>(); 
+        }
     }
 }
+ 
